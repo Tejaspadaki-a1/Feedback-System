@@ -6,7 +6,7 @@ from routes.feedback import feedback_bp
 from routes.user import user_bp
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/feedback_db'
+app.config['MONGO_URI'] = 'mongodb+srv://tejaspadaki255:tejas%401@cluster0.cpwl2.mongodb.net/feedback_db'
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 CORS(app)
