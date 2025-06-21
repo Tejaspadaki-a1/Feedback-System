@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: feedback-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/feedbackdb
+      - FLASK_ENV=development
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/app
+    command: python app.py
+
+  mongo:
+    image: mongo:6
+    container_name: feedback-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
